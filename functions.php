@@ -1,5 +1,14 @@
 <?php
 
+function devco_theme_support() {
+
+    // Adds dynamic title tag support
+    add_theme_support('title-tag');
+
+}
+add_action('after_theme_setup', 'devco_theme_support');
+
+
 // Wordpress klare kje å handla rekkefølgen css loade, så detta tullet e nødvendig
 function devco_register_styles() {
     $version = wp_get_theme()->get( 'Version' );
@@ -20,10 +29,13 @@ function devco_register_scripts() {
     $version = wp_get_theme()->get( 'Version' );
     wp_enqueue_style("Devco-tailwind", "https://cdn.tailwindcss.com", array(), "3.0.12", false);
     wp_enqueue_style("Devco-tailwindconfig", get_template_directory_uri()."/tailwind.config.js", array(), $version, false);
+
+    // For test purposes only.
+    wp_enqueue_style("Devco-alpinejs", "https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js", array(), "3", false);
     wp_enqueue_style("Devco-mainscript", get_template_directory_uri()."/assets/js/main.js", array(), $version, true);
     
 }
-add_action('wp_enqueue_scripts', "devco_register_styles");
+add_action('wp_enqueue_scripts', "devco_register_scripts");
 
 ?>
 

@@ -1,7 +1,3 @@
-<?php
-
-
-?>
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/wp-content/themes/Wordpress-Theme/style.css">
@@ -13,13 +9,8 @@
   <title>Devco</title>
 </head>
 <body>
-  <div style="text-align: center" class="container-fluid">
-    <div class='jumbotron'>
-      <h1 class='display-4'>Devco</h1>
-      <p class='lead'>Devco spesialliserer seg innen webutvikling og mye annet</p>
-      <hr class='my-4'>
-      <p class='lead'></p>
-    </div>
+  <div class="container">
+    <p>Devco</p>
   </div>
 </body>
 </html>

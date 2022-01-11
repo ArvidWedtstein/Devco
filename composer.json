@@ -1,5 +1,5 @@
 {
-    "name": "wordpresstemplate",
+    "name": "wb",
     "require": {
         "monolog/monolog": "2.0.*"
     }

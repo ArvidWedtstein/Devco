@@ -7,3 +7,11 @@ Tags: left-sidebar, responsive, RGB
 Author: Arvid
 Author URI: https://github.com/ArvidWedtstein
 */
+
+:root {
+    --black: #141204;
+    --grey: #5C6F68;
+    --red: #EF3E36;
+    --darkblue: #0B1D51;
+    --blue: #5DB7DE;
+}

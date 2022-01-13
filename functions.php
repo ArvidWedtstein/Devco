@@ -1,9 +1,24 @@
 <?php
 
+function devco_menus() {
+    $locations = array(
+        'primary' => "Desktop primary sidebar",
+        'header' => "Desktop primary header",
+        'footer' => "Footer Menu Items"
+    );
+
+    register_nav_menus($locations);
+}
+add_action("init", 'devco_menus');
+
 function devco_theme_support() {
 
     // Adds dynamic title tag support
     add_theme_support('title-tag');
+    add_theme_support('custom-logo');
+    /*add_theme_support('custom-background');
+    add_theme_support('wp-block-styles');
+    add_theme_support('widgets');*/
 
 }
 add_action('after_theme_setup', 'devco_theme_support');

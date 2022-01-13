@@ -15,3 +15,8 @@ Author URI: https://github.com/ArvidWedtstein
     --darkblue: #0B1D51;
     --blue: #5DB7DE;
 }
+
+.menu-item a:hover {
+    background: gray;
+    border-radius: 0.5rem;
+}

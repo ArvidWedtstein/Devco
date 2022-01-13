@@ -39,7 +39,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Devco</title>
   <?php
-    // wp_head();
+    wp_head();
   ?>
 </head>
 <body>
@@ -53,3 +53,7 @@
       </div>
     </div>
   </header>
+  <div class="main-wrapper">
+    <div class="page-title">
+      <h1 class="heading">Page Title</h1>
+    </div>

@@ -1,6 +1,6 @@
 <?php
-  include('header.php');
-  // get_header();
+  //include('header.php');
+  get_header();
 ?>
 <div x-data="{ open: false }">
   <button @click="open = ! open">Toggle Navigation</button>
@@ -20,7 +20,7 @@
       <template x-for="tjeneste in tjenester">
         <li>
           <div class="bg-dgrey text-white rounded-md m-1 p-3 transition ease-in-out delay-0 hover:shadow-devco duration-200 hover:border-solid border-2 border-black-800">
-              <p class="text-white-600" x-text="tjeneste"></p>
+            <p class="text-white-600" x-text="tjeneste"></p>
           </div>
         </li>
       </template>
@@ -30,6 +30,6 @@
 
 
 <?php
-  include('footer.php');
-  // get_footer();
+  //include('footer.php');
+  get_footer();
 ?>

@@ -11,6 +11,35 @@ function devco_menus() {
 }
 add_action("init", 'devco_menus');
 
+
+function devco_widget_areas() {
+    register_sidebar(
+        array(
+            'before_title' => '',
+            'after_title' => '',
+            'before_widget' => '<ul class="ml-auto flex items-center">',
+            'after_widget' => '</ul>',
+            'name' => 'Sidebar Area',
+            'id' => 'sidebar-1',
+            'description' => 'Sidebar widget area',
+        )
+    );
+
+    register_sidebar(
+        array(
+            'before_title' => '',
+            'after_title' => '',
+            'before_widget' => '',
+            'after_widget' => '',
+            'name' => 'Footer Area',
+            'id' => 'footer-1',
+            'description' => 'Footer widget area',
+        )
+    );
+}
+add_action('widgets_init', 'devco_widget_areas');
+
+
 function devco_theme_support() {
 
     // Adds dynamic title tag support
@@ -53,5 +82,45 @@ function devco_register_scripts() {
 }
 add_action('wp_enqueue_scripts', "devco_register_scripts");
 
+
+// Add custom posttype
+function devco_create_posttype() {
+    $supports = array(
+        'title', // post title
+        'editor', // post content
+        'author', // post author
+        'thumbnail', // featured images
+        'excerpt', // post excerpt
+        'custom-fields', // custom fields
+        'comments', // post comments
+        'revisions', // post revisions
+        'post-formats', // post formats
+    );
+    $labels = array(
+        'name' => _x('oppdrag', 'plural'),
+        'singular_name' => _x('oppdrag', 'singular'),
+        'menu_name' => _x('Oppdrag', 'admin menu'),
+        'name_admin_bar' => _x('Oppdrag', 'admin bar'),
+        'add_new' => _x('Add New', 'add new'),
+        'add_new_item' => __('Add New oppdrag'),
+        'new_item' => __('New news'),
+        'edit_item' => __('Edit oppdrag'),
+        'view_item' => __('View oppdrag'),
+        'all_items' => __('All oppdrag'),
+        'search_items' => __('Search oppdrag'),
+        'not_found' => __('No oppdrag found.'),
+    );
+    $args = array(
+        'supports' => $supports,
+        'labels' => $labels,
+        'public' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'oppdrag'),
+        'has_archive' => true,
+        'hierarchical' => false,
+    );
+    register_post_type('oppdrag', $args);
+}
+add_action('init', 'devco_create_posttype');
 ?>
 

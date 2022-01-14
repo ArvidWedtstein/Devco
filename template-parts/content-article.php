@@ -3,7 +3,7 @@
   <div class="m-4 lg:flex lg:flex-wrap">
     <div class="p-4 md:w-1/3">
       <div class="p-8 bg-discord-800 rounded shadow-md">
-        <h2 class="text-2xl font-bold text-gray-200">Tailwind CSS 2.2 Blog</h2>
+        <h2 class="text-2xl font-bold text-white"><?php the_title(); ?></h2>
         <div class="flex justify-between">
           <span class="text-sm text-gray-300"><?php the_date(); ?></span>
           <span class="inline-flex text-gray-300">
@@ -17,7 +17,7 @@
         <?php 
           the_tags('<span class="tag"><i class="fa fa-tag"></i>', '</span><span class="tag"><i class="fa fa-tag"></i>', '</span>');
         ?>
-        <p class="text-justify text-gray-300">
+        <p class="text-justify text-white">
           <?php
             the_content();
           ?>

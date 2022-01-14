@@ -70,14 +70,12 @@
             <div class="flex-shrink-0 flex items-center">
               <?php
                 if (function_exists('the_custom_logo')) {
-                  the_custom_logo();
                   $custom_logo_id = get_theme_mod('custom_logo');
                   $logo = wp_get_attachment_image_src($custom_logo_id);
-                  the_custom_logo();
                 } 
               ?>
-              <img class="mx-auto my-auto" src="<?php echo $logo?>">
-              <h1 class="text-white text-xl font-bold">Devco</h1>
+              <img class="mx-auto my-auto" src="<?php echo $logo ?>">
+              <a class="text-white text-xl font-bold" href="index.php"><?php echo get_bloginfo('name') ?></a>
             </div>
             <div class="hidden sm:block sm:ml-6">
               <?php

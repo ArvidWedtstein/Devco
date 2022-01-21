@@ -129,6 +129,7 @@ function devco_create_posttype() {
         'has_archive' => true,
         'hierarchical' => false,
     );
+
     register_post_type('oppdrag', $args);
 }
 add_action('init', 'devco_create_posttype');

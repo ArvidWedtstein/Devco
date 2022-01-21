@@ -137,6 +137,7 @@
       <!--<?php
         dynamic_sidebar('sidebar-1');
       ?>-->  
+      
     </nav>
   </header>
   <div class="main-wrapper">

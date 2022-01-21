@@ -2,7 +2,6 @@
 
 function devco_menus() {
     $locations = array(
-        'primary' => "Desktop primary sidebar",
         'header' => "Desktop primary header",
         'footer' => "Footer Menu Items"
     );
@@ -36,6 +35,17 @@ function devco_widget_areas() {
             'description' => 'Footer widget area',
         )
     );
+    register_sidebar(
+        array(
+            'before_title' => '',
+            'after_title' => '',
+            'before_widget' => '',
+            'after_widget' => '',
+            'name' => 'Front Page Area',
+            'id' => 'front-1',
+            'description' => 'Front Page widget area',
+        )
+    );
 }
 add_action('widgets_init', 'devco_widget_areas');
 
@@ -47,8 +57,8 @@ function devco_theme_support() {
     add_theme_support('custom-logo');
     add_theme_support('post-thumbnails');
     /*add_theme_support('custom-background');
-    add_theme_support('wp-block-styles');
-    add_theme_support('widgets');*/
+    add_theme_support('wp-block-styles');*/
+    add_theme_support('widgets');
 
 }
 add_action('after_theme_setup', 'devco_theme_support');

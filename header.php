@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-  <!-- <link rel="stylesheet" href="/wp-content/themes/Wordpress-Theme/style.css"> -->
+  <link rel="stylesheet" href="/wp-content/themes/Wordpress-Theme/style.css">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -37,7 +37,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Devco</title>
+  <title><?php echo get_bloginfo('name') ?></title>
+  <style>
+    .menu-item {
+      list-style-type: none;
+      padding: 0.5rem;
+      background: #36393f;
+      border-radius: 0.25rem;
+      color: #ffffff;
+    }
+  </style>
   <?php
     wp_head();
   ?>
@@ -81,9 +90,9 @@
               <?php
                 wp_nav_menu(
                   array(
-                    'menu' => "primary",
+                    'menu' => "header",
                     'container' => "",
-                    'theme_location' => "primary",
+                    'theme_location' => "header",
                     'items_wrap' => '<div id="" class="flex space-x-4">%3$s</div>'
                   )
                 );
@@ -114,7 +123,7 @@
       </div>
 
       <!-- Mobile menu, show/hide based on menu state. -->
-      <div class="sm:hidden" id="mobile-menu">
+      <!--<div class="sm:hidden" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1">
           <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>
 
@@ -124,10 +133,10 @@
 
           <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a>
         </div>
-      </div>
-      <?php
+      </div>-->
+      <!--<?php
         dynamic_sidebar('sidebar-1');
-      ?>  
+      ?>-->  
     </nav>
   </header>
   <div class="main-wrapper">

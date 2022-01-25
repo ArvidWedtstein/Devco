@@ -3,10 +3,11 @@
 function devco_menus() {
     $locations = array(
         'header' => "Desktop primary header",
-        'footer' => "Footer Menu Items"
+        'footer' => "Footer Menu Items",
     );
 
     register_nav_menus($locations);
+    add_editor_style('editor-style');
 }
 add_action("init", 'devco_menus');
 
@@ -56,10 +57,15 @@ function devco_theme_support() {
     add_theme_support('title-tag');
     add_theme_support('custom-logo');
     add_theme_support('post-thumbnails');
-    /*add_theme_support('custom-background');
-    add_theme_support('wp-block-styles');*/
-    add_theme_support('widgets');
-
+    /*add_theme_support('custom-background');*/
+    add_theme_support('wp-block-styles');
+    add_theme_support( 'editor-styles' );
+    add_theme_support( 'html5', array('style','script', ) );
+    add_theme_support( 'automatic-feed-links' );
+    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'responsive-embeds' );
+    add_theme_support( 'editor-color-palette' );
+    add_theme_support( 'block-templates' );
 }
 add_action('after_theme_setup', 'devco_theme_support');
 
@@ -133,5 +139,43 @@ function devco_create_posttype() {
     register_post_type('oppdrag', $args);
 }
 add_action('init', 'devco_create_posttype');
+
+function devco_add_settings() {
+    add_theme_page("Theme Customization", "Theme Customization", "manage_options", "theme-options", "theme_option_page", null, 99);
+}
+function reading_section_description () {
+    echo '<p>This is the new Reading section. </p>';
+}
+function options_callback ($args){
+    echo '<p>This is the new Reading setting callback. </p>';
+}
+add_action('admin_init', 'devco_add_settings' );
+
+
+function theme_option_page() {
+    ?>
+    <div class="wrap">
+    <h1>Custom Theme Options Page</h1>
+    <form method="post" action="options.php">
+    <?php
+        // display all sections for theme-options page
+        do_settings_sections("theme-options");
+        submit_button();
+    ?>
+    </form>
+    </div>
+    <?php
+    }
+    function theme_section_description(){
+        echo '<p>Theme Option Section</p>';
+    }
+    //admin-init hook to create settings section with title “New Theme Options Section”.
+    function test_theme_settings(){
+    add_settings_section( 'first_section', 'New Theme Options Section',
+    'theme_section_description','theme-options');
+}
+add_action('admin_init','test_theme_settings');
+
+// https://blog.templatetoaster.com/wordpress-settings-api-creating-theme-options/
 ?>
 

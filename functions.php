@@ -71,7 +71,7 @@ function devco_theme_support() {
     add_theme_support('widgets');
     add_theme_support('post-formats');
 }
-add_action('after_theme_setup', 'devco_theme_support');
+//add_action('after_theme_setup', 'devco_theme_support');
 
 
 // Wordpress klare kje å handla rekkefølgen css loade, så detta tullet e nødvendig

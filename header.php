@@ -78,12 +78,13 @@
           <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div class="flex-shrink-0 flex items-center">
               <?php
-                if (function_exists('the_custom_logo')) {
-                  $custom_logo_id = get_theme_mod('custom_logo');
-                  $logo = wp_get_attachment_image_src($custom_logo_id);
+                $custom_logo_id = get_theme_mod( 'devco_theme_logo' );
+                $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+                if (has_custom_logo()) {
+                  echo '<img class="mx-auto my-auto" width="30" src="' . get_theme_mod( 'devco_theme_logo' ) . '" alt="' . get_bloginfo('name') . '">';
                 } 
+                // echo get_option('my_setting_field');
               ?>
-              <img class="mx-auto my-auto" src="<?php echo $logo ?>">
               <a class="text-white text-xl font-bold" href="index.php"><?php echo get_bloginfo('name') ?></a>
             </div>
             <div class="hidden sm:block sm:ml-6">

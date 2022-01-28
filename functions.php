@@ -122,7 +122,7 @@ function devco_create_posttype() {
         'new_item' => __('New news'),
         'edit_item' => __('Edit oppdrag'),
         'view_item' => __('View oppdrag'),
-        'all_items' => __('All oppdrag'),
+        'all_items' => __('All Oppdrag'),
         'search_items' => __('Search oppdrag'),
         'not_found' => __('No oppdrag found.'),
     );
@@ -140,16 +140,24 @@ function devco_create_posttype() {
 }
 add_action('init', 'devco_create_posttype');
 
+/* Customizer Options */
+require get_template_directory() . '/inc/customizer.php';
+
 function devco_add_settings() {
-    add_theme_page("Theme Customization", "Theme Customization", "manage_options", "theme-options", "theme_option_page", null, 99);
+    //add_theme_page("Theme Customization", "Theme Customization", "manage_options", "theme_options", "theme_option_page", null, 99);
+    add_menu_page(
+        __( 'Devco', 'my-textdomain' ),
+        __( 'Devco', 'my-textdomain' ),
+        'manage_options',
+        'sample-page',
+        'theme_option_page',
+        'dashicons-schedule',
+        3
+    );
+    // add_submenu_page('themes.php', 'testsubpage', 'test sub page', "manage_options", "theme-options", null, 0);
 }
-function reading_section_description () {
-    echo '<p>This is the new Reading section. </p>';
-}
-function options_callback ($args){
-    echo '<p>This is the new Reading setting callback. </p>';
-}
-add_action('admin_init', 'devco_add_settings' );
+
+add_action('admin_menu', 'devco_add_settings' );
 
 
 function theme_option_page() {
@@ -159,22 +167,43 @@ function theme_option_page() {
     <form method="post" action="options.php">
     <?php
         // display all sections for theme-options page
-        do_settings_sections("theme-options");
+
+        settings_fields( 'sample-page' );
+        do_settings_sections( 'sample-page' );
         submit_button();
     ?>
     </form>
     </div>
     <?php
-    }
-    function theme_section_description(){
-        echo '<p>Theme Option Section</p>';
-    }
-    //admin-init hook to create settings section with title “New Theme Options Section”.
-    function test_theme_settings(){
-    add_settings_section( 'first_section', 'New Theme Options Section',
-    'theme_section_description','theme-options');
 }
-add_action('admin_init','test_theme_settings');
+function my_setting_markup() {
+    ?>
+    <label for="my-input"><?php _e( 'My Input' ); ?></label>
+    <input type="text" id="my_setting_field" name="my_setting_field" value="<?php echo get_option( 'my_setting_field' ); ?>">
+    <?php
+}
+function my_setting_section_callback_function() {
+    echo '<p>Intro text for our settings section</p>';
+}
+    //admin-init hook to create settings section with title “New Theme Options Section”.
+function test_theme_settings(){
+    add_settings_section(
+        'sample_page_setting_section',
+        __( 'Custom settings', 'my-domain'),
+        'my_settings_callback_function',
+        'sample-page'
+    );
+    add_settings_field(
+        'my_setting_field',
+        __( 'My custom setting field', 'my-textdomain' ),
+        'my_setting_markup',
+        'sample-page',
+        'sample_page_setting_section'
+    );
+
+    register_setting( 'sample-page', 'my_setting_field' );
+}
+add_action('admin_menu','test_theme_settings');
 
 // https://blog.templatetoaster.com/wordpress-settings-api-creating-theme-options/
 ?>

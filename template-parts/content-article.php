@@ -1,7 +1,7 @@
 
  <section>
   <div class="m-4 lg:flex lg:flex-wrap">
-    <div class="p-4 md:w-1/3">
+    <div class="p-4 w-full md:w-1/3">
       <div class="p-8 bg-discord-800 rounded shadow-md">
         <h2 class="text-2xl font-bold text-white"><?php the_title(); ?></h2>
         <div class="flex justify-between">

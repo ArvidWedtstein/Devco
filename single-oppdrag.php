@@ -6,11 +6,11 @@
     if (have_posts()) {
       $args = array( 'post_type' => 'oppdrag' );
       $loop = new WP_Query( $args );
-      while ( $loop->have_posts() ) : $loop-> {
+      while ( $loop->have_posts() ) : $loop->the_post(); 
         the_post();
-        get_template_part("template-parts/content", "project");
-      }
-    }            
+        get_template_part("template-parts/content", "article");
+      endwhile;
+    }          
   ?>
 </article>
 <?php

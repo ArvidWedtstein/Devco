@@ -56,8 +56,9 @@ function devco_theme_support() {
     // Adds dynamic title tag support
     add_theme_support('title-tag');
     add_theme_support('custom-logo');
-    add_theme_support('post-thumbnails');
-    /*add_theme_support('custom-background');*/
+    add_theme_support('post-thumbnails', array( 'post', 'oppdrag' ));
+    add_theme_support('dark-editor-style');
+    add_theme_support('custom-background');
     add_theme_support('wp-block-styles');
     add_theme_support( 'editor-styles' );
     add_theme_support( 'html5', array('style','script', ) );
@@ -66,6 +67,9 @@ function devco_theme_support() {
     add_theme_support( 'responsive-embeds' );
     add_theme_support( 'editor-color-palette' );
     add_theme_support( 'block-templates' );
+    add_theme_support('widgets-block-editor');
+    add_theme_support('widgets');
+    add_theme_support('post-formats');
 }
 add_action('after_theme_setup', 'devco_theme_support');
 
@@ -100,110 +104,15 @@ add_action('wp_enqueue_scripts', "devco_register_scripts");
 
 
 // Add custom posttype
-function devco_create_posttype() {
-    $supports = array(
-        'title', // post title
-        'editor', // post content
-        'author', // post author
-        'thumbnail', // featured images
-        'excerpt', // post excerpt
-        'custom-fields', // custom fields
-        'comments', // post comments
-        'revisions', // post revisions
-        'post-formats', // post formats
-    );
-    $labels = array(
-        'name' => _x('oppdrag', 'plural'),
-        'singular_name' => _x('oppdrag', 'singular'),
-        'menu_name' => _x('Oppdrag', 'admin menu'),
-        'name_admin_bar' => _x('Oppdrag', 'admin bar'),
-        'add_new' => _x('Add New', 'add new'),
-        'add_new_item' => __('Add New oppdrag'),
-        'new_item' => __('New news'),
-        'edit_item' => __('Edit oppdrag'),
-        'view_item' => __('View oppdrag'),
-        'all_items' => __('All Oppdrag'),
-        'search_items' => __('Search oppdrag'),
-        'not_found' => __('No oppdrag found.'),
-    );
-    $args = array(
-        'supports' => $supports,
-        'labels' => $labels,
-        'public' => true,
-        'query_var' => true,
-        'rewrite' => array('slug' => 'oppdrag'),
-        'has_archive' => true,
-        'hierarchical' => false,
-    );
-
-    register_post_type('oppdrag', $args);
-}
-add_action('init', 'devco_create_posttype');
+require get_template_directory() . '/inc/oppdrag.php';
 
 /* Customizer Options */
 require get_template_directory() . '/inc/customizer.php';
 
-function devco_add_settings() {
-    //add_theme_page("Theme Customization", "Theme Customization", "manage_options", "theme_options", "theme_option_page", null, 99);
-    add_menu_page(
-        __( 'Devco', 'my-textdomain' ),
-        __( 'Devco', 'my-textdomain' ),
-        'manage_options',
-        'sample-page',
-        'theme_option_page',
-        'dashicons-schedule',
-        3
-    );
-    // add_submenu_page('themes.php', 'testsubpage', 'test sub page', "manage_options", "theme-options", null, 0);
-}
 
-add_action('admin_menu', 'devco_add_settings' );
+/* Devco Settings */
+require get_template_directory() . '/inc/settings.php';
 
-
-function theme_option_page() {
-    ?>
-    <div class="wrap">
-    <h1>Custom Theme Options Page</h1>
-    <form method="post" action="options.php">
-    <?php
-        // display all sections for theme-options page
-
-        settings_fields( 'sample-page' );
-        do_settings_sections( 'sample-page' );
-        submit_button();
-    ?>
-    </form>
-    </div>
-    <?php
-}
-function my_setting_markup() {
-    ?>
-    <label for="my-input"><?php _e( 'My Input' ); ?></label>
-    <input type="text" id="my_setting_field" name="my_setting_field" value="<?php echo get_option( 'my_setting_field' ); ?>">
-    <?php
-}
-function my_setting_section_callback_function() {
-    echo '<p>Intro text for our settings section</p>';
-}
-    //admin-init hook to create settings section with title “New Theme Options Section”.
-function test_theme_settings(){
-    add_settings_section(
-        'sample_page_setting_section',
-        __( 'Custom settings', 'my-domain'),
-        'my_settings_callback_function',
-        'sample-page'
-    );
-    add_settings_field(
-        'my_setting_field',
-        __( 'My custom setting field', 'my-textdomain' ),
-        'my_setting_markup',
-        'sample-page',
-        'sample_page_setting_section'
-    );
-
-    register_setting( 'sample-page', 'my_setting_field' );
-}
-add_action('admin_menu','test_theme_settings');
 
 // https://blog.templatetoaster.com/wordpress-settings-api-creating-theme-options/
 ?>

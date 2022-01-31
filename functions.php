@@ -63,6 +63,11 @@ function devco_register_scripts() {
 add_action('wp_enqueue_scripts', "devco_register_scripts");
 
 
+function devco_init_roles() {
+    add_role( 'Peasant', 'Peasant', array('edit_posts') );
+}
+add_action("init", 'devco_init_roles');
+
 // Add custom posttype
 require get_template_directory() . '/inc/oppdrag.php';
 

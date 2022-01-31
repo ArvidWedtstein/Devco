@@ -25,6 +25,7 @@ function devco_create_posttype() {
         'all_items' => __('All Oppdrag'),
         'search_items' => __('Search oppdrag'),
         'not_found' => __('No oppdrag found.'),
+        'update_item' => __('Update Oppdrag')
     );
     $args = array(
         'supports' => $supports,
@@ -39,6 +40,7 @@ function devco_create_posttype() {
         'show_in_menu'        => true,
         'show_in_nav_menus'   => true,
         'show_in_admin_bar'   => true,
+        'show_in_rest'        => true,
         'menu_position'       => 5,
         'can_export'          => true,
         'has_archive'         => true,

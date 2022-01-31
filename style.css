@@ -20,3 +20,16 @@ Author URI: https://github.com/ArvidWedtstein
     background: gray;
     border-radius: 0.5rem;
 }
+.author_bio_section{
+    color: #fff;
+background-color: #F5F5F5;
+padding: 15px;
+border: 1px solid #ccc;
+}
+    
+.author_name{
+    color: #fff !important; 
+font-size:16px;
+font-weight: bold;
+}
+    

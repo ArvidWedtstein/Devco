@@ -13,20 +13,6 @@ function devco_register_blocks() {
 		[ 'wp-blocks', 'wp-element', 'wp-editor' ],
 		filemtime( get_template_directory() . '/inc/blocks/call-to-action/call-to-action.js' )
 	);
-	// wp_register_script(
-	// 	'call-to-action',
-	// 	plugins_url( 'blocks/call-to-action/call-to-action.js', __FILE__ ),
-	// 	[ 'wp-blocks', 'wp-element', 'wp-editor' ],
-	// 	filemtime( plugin_dir_path( __FILE__ ) . 'blocks/call-to-action/call-to-action.js' )
-	// );
-
-	// Add block style.
-	// wp_register_style(
-	// 	'call-to-action',
-	// 	plugins_url( 'blocks/call-to-action/call-to-action.css', __FILE__ ),
-	// 	[],
-	// 	filemtime( plugin_dir_path( __FILE__ ) . 'blocks/call-to-action/call-to-action.css' )
-	// );
 	wp_register_style(
 		'call-to-action',
         get_template_directory() . '/inc/blocks/call-to-action/call-to-action.css',

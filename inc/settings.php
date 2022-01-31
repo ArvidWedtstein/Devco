@@ -28,17 +28,26 @@ function theme_option_page() {
         do_settings_sections( 'sample-page' );
         submit_button();
     ?>
+    <input
+      type="submit"
+      name="submit"
+      class="button button-primary"
+      value="<?php esc_attr_e( 'Save' ); ?>"
+    />
+
     </form>
     </div>
     <?php
 }
 function my_setting_markup() {
     ?>
-        <label for="my-input"><?php the_post();?></label>
         <input type="text" id="my_setting_field" name="tdfstgd" value="<?php echo get_option( 'my_setting_field' ); ?>">
     <?php
-    
-    
+}
+function avatar_comment_setting_markup() {
+    ?>
+        <input type="checkbox" id="show_avatars_comment" name="d">
+    <?php
 }
     //admin-init hook to create settings section with title “New Theme Options Section”.
 function test_theme_settings(){
@@ -52,6 +61,13 @@ function test_theme_settings(){
         'my_setting_field',
         __( 'Oppdrag', 'my-textdomain' ),
         'my_setting_markup',
+        'sample-page',
+        'sample_page_setting_section'
+    );
+    add_settings_field(
+        'show_avatars_comment',
+        __( 'Show Avatar on Comment', 'my-textdomain' ),
+        'avatar_comment_setting_markup',
         'sample-page',
         'sample_page_setting_section'
     );

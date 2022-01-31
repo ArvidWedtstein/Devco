@@ -3,7 +3,7 @@
 /**
 * Create Logo Setting and Upload Control
 */
-function your_theme_new_customizer_settings($wp_customize) {
+function devco_new_customizer_settings($wp_customize) {
     // add a setting for the site logo
     $wp_customize -> add_setting('devco_theme_logo');
     // Add a control to upload the logo
@@ -12,8 +12,8 @@ function your_theme_new_customizer_settings($wp_customize) {
     'label' => 'Upload Logo',
     'section' => 'title_tagline',
     'settings' => 'devco_theme_logo',
-    ) ) );
+    )));
 }
-add_action('customize_register', 'your_theme_new_customizer_settings');
+add_action('customize_register', 'devco_new_customizer_settings');
 
 ?>

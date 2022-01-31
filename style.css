@@ -14,22 +14,10 @@ Author URI: https://github.com/ArvidWedtstein
     --red: #EF3E36;
     --darkblue: #0B1D51;
     --blue: #5DB7DE;
+    --hex-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
 }
 
 .menu-item a:hover {
     background: gray;
     border-radius: 0.5rem;
 }
-.author_bio_section{
-    color: #fff;
-background-color: #F5F5F5;
-padding: 15px;
-border: 1px solid #ccc;
-}
-    
-.author_name{
-    color: #fff !important; 
-font-size:16px;
-font-weight: bold;
-}
-    

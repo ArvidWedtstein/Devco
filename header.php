@@ -46,6 +46,7 @@
       border-radius: 0.25rem;
       color: #ffffff;
     }
+    
   </style>
   <?php
     wp_head();

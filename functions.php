@@ -38,7 +38,7 @@ add_action('after_theme_setup', 'devco_theme_support');
 // Wordpress klare kje å handla rekkefølgen css loade, så detta tullet e nødvendig
 function devco_register_styles() {
     $version = wp_get_theme()->get( 'Version' );
-    wp_enqueue_style("Devco-style", get_template_directory_uri() . "/style.css", array(), $version, 'all');
+    wp_enqueue_style("Devco-style", get_template_directory() . "/style.css", array(), $version, 'all');
     
     // Font Awesome Icons
     wp_enqueue_style("Devco-fontawesome", "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", array(), '4.7.0', 'all');
@@ -79,6 +79,11 @@ require get_template_directory() . '/inc/blocks.php';
 
 // Enable custom author infobox
 require get_template_directory() . '/inc/author-info-box.php';
+
+
+// Enable block patterns
+require get_template_directory() . '/inc/block-patterns.php';
+
 
 // https://blog.templatetoaster.com/wordpress-settings-api-creating-theme-options/
 ?>

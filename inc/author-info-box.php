@@ -46,7 +46,7 @@ function wpb_author_info_box( $content ) {
         }
         
         // Pass all this info to post content  
-        $content = $content . '<footer class="p-3 mt-3 bg-discord-800 border-2 border-white border-solid" >' . $author_details . '</footer>';
+        $content = $content . '<footer class="p-3 mt-3 bg-discord-800 border-2 border-white border-solid rounded" >' . $author_details . '</footer>';
     }
     return $content;
 }

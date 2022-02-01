@@ -25,6 +25,7 @@ function devco_register_blocks() {
 		'style' => 'call-to-action', // Loads both on editor and frontend.
 		'editor_script' => 'call-to-action', // Loads only on editor.
 	] );
+	register_block_type(__DIR__);
 }
 
 add_action( 'init', 'devco_register_blocks' );

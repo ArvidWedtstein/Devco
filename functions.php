@@ -19,7 +19,7 @@ require get_template_directory() . '/inc/widgets.php';
 function devco_theme_support() {
     add_theme_support('title-tag'); // Adds dynamic title tag support
     add_theme_support('custom-logo'); // Add custom logo
-    add_theme_support('post-thumbnails', array( 'post', 'oppdrag', 'page' )); // should add thumbnail option. doesn't work
+    add_theme_support('post-thumbnails', array( 'post', 'oppdrag', 'page', 'project' )); // should add thumbnail option. doesn't work
     add_theme_support('dark-editor-style');
     add_theme_support('custom-background');
     add_theme_support('wp-block-styles');
@@ -63,13 +63,13 @@ function devco_register_scripts() {
 add_action('wp_enqueue_scripts', "devco_register_scripts");
 
 
-function devco_init_roles() {
-    add_role( 'Peasant', 'Peasant', array('edit_posts') );
-}
-add_action("init", 'devco_init_roles');
+// add custom roles
+require get_template_directory() . '/inc/roles.php';
+
 
 // Add custom posttype
 require get_template_directory() . '/inc/oppdrag.php';
+require get_template_directory() . '/inc/project.php';
 
 /* Customizer Options */
 require get_template_directory() . '/inc/customizer.php';
@@ -88,6 +88,7 @@ require get_template_directory() . '/inc/author-info-box.php';
 
 // Enable block patterns
 require get_template_directory() . '/inc/block-patterns.php';
+
 
 
 // https://blog.templatetoaster.com/wordpress-settings-api-creating-theme-options/

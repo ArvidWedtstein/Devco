@@ -32,7 +32,7 @@
 
         ?>
         <hr class="my-3">
-        <?php echo get_option( 'devco_color' ); ?>
+        <!-- <?php echo get_option( 'devco_color' ); ?> -->
         <?php comments_template(); ?>
       </div>
     </div>

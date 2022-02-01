@@ -9,11 +9,10 @@
         $loop = new WP_Query( $args );
         while ( $loop->have_posts() ) {
           the_post();
-          // get_template_part("template-parts/content", "archive");
+          get_template_part("template-parts/content", "archive");
         }
       }          
     ?>
-    <p>prooooooooooooooooojects</p>
   </div>
 </article>
 <?php

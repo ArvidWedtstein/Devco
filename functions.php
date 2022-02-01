@@ -69,7 +69,9 @@ require get_template_directory() . '/inc/roles.php';
 
 // Add custom posttype
 require get_template_directory() . '/inc/oppdrag.php';
-require get_template_directory() . '/inc/project.php';
+
+// Add Projects type
+// require get_template_directory() . '/inc/project.php';
 
 /* Customizer Options */
 require get_template_directory() . '/inc/customizer.php';

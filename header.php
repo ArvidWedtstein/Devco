@@ -38,7 +38,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo get_bloginfo('name') ?></title>
-  <style>
+  <style lang="scss">
     .menu-item {
       list-style-type: none;
       padding: 0.5rem;
@@ -46,7 +46,139 @@
       border-radius: 0.25rem;
       color: #ffffff;
     }
-    
+    .chart
+    {
+        font-size: 1em;
+
+        perspective: 1000px;
+        perspective-origin: 50% 50%;
+        backface-visibility: visible;
+    }
+
+    $faceColor: rgba($white, .3);
+    $growColor: rgba($red, .6);
+
+    .bar
+    {
+        font-size: 1em;
+
+        position: relative;
+
+        height: 10em;
+
+        transition: $transition;
+        transform: rotateX(60deg) rotateY(0deg);
+
+        transform-style: preserve-3d;
+
+        .face
+        {
+            font-size: 2em;
+
+            position: relative;
+
+            width: 100%;
+            height: 2em;
+
+            background-color: $faceColor;
+
+            &.side-a,
+            &.side-b
+            {
+                width: 2em;
+            }
+        }
+        .side-a
+        {
+            transform: rotateX(90deg) rotateY(-90deg) translateX(2em) translateY(1em) translateZ(1em);
+        }
+        .side-b
+        {
+            transform: rotateX(90deg) rotateY(-90deg) translateX(4em) translateY(1em) translateZ(-1em);
+            position: absolute;
+            right: 0;
+        }
+        .side-0
+        {
+            transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(-1em);
+        }
+        .side-1
+        {
+            transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(3em);
+        }
+        .top
+        {
+            transform: rotateX(0deg) rotateY(0) translateX(0em) translateY(4em) translateZ(2em);
+        }
+        .floor
+        {
+            box-shadow: 0 .1em 0.6em rgba(0,0,0,.3), .6em -0.5em 3em rgba(0,0,0,.3), 1em -1em 8em $white;
+        }
+    }
+
+    .growing-bar
+    {
+        transition: $transition;
+        background-color: $growColor;
+        width: 100%;
+        height: 2em;
+    }
+
+    @mixin drawSkin($color, $name)
+    {
+        .bar.#{$name}
+        {
+            .side-a,
+            // &.bar-100 .side-b,
+            .growing-bar
+            {
+                background-color: rgba($color, .6);
+            }
+            .side-0 .growing-bar
+            {
+                box-shadow: -0.5em -1.5em 4em $color;
+            }
+            .floor .growing-bar
+            {
+                box-shadow: 0em 0em 2em $color;
+            }
+        }
+    }
+
+    @mixin drawFaces($color, $name)
+    {
+        .chart .bar.#{$name} .face
+        {
+            background-color: rgba($color, .2);
+        }
+    }
+
+    @include drawSkin(rgba($yellow, .8), 'yellow');
+    @include drawSkin(rgba($red, .8), 'red');
+    @include drawSkin($cyan, 'cyan');
+    @include drawSkin(rgba($navy, .8), 'navy');
+    @include drawSkin($lime, 'lime');
+    @include drawSkin($white, 'white');
+    @include drawSkin($gray, 'gray');
+
+    @include drawFaces(rgba($yellow, .6), 'yellow-face');
+    @include drawFaces($lime, 'lime-face');
+    @include drawFaces(rgba($red, .6), 'red-face');
+    @include drawFaces(rgba($navy, .6), 'navy-face');
+    @include drawFaces($cyan, 'cyan-face');
+    @include drawFaces($gray, 'gray-face');
+    @include drawFaces($lightGray, 'lightGray-face');
+
+    @for $i from 0 to 101
+    {
+        .bar-#{$i}
+        {
+            .growing-bar
+            {
+                width: percentage($i/100);
+            }
+        }
+    }
   </style>
   <?php
     wp_head();

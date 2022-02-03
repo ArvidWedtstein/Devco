@@ -11,6 +11,7 @@ ob_start();
         do_settings_sections( "devco_admin_page" );
         submit_button();
     ?>
+    <input name="submit" class="button button-primary" type="submit" value="<?php esc_attr_e( 'Save' ); ?>" />
 
     </form>
 </div>

@@ -39,6 +39,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo get_bloginfo('name') ?></title>
   <style lang="scss">
+    :root {
+      --growColor: rgba(red, .6);
+      --faceColor: rgba(white, .3);
+    }
+    .pain { color: <?php echo get_theme_mod('header_color_hue', '#000000'); ?>; }
     .menu-item {
       list-style-type: none;
       padding: 0.5rem;
@@ -55,71 +60,56 @@
         backface-visibility: visible;
     }
 
-    $faceColor: rgba($white, .3);
-    $growColor: rgba($red, .6);
-
-    .bar
+    .bar {
+      font-size: 1em;
+      position: relative;
+      height: 10em;
+      transition: 0.2s;
+      transform: rotateX(60deg) rotateY(0deg);
+      transform-style: preserve-3d;
+    }
+    .bar .side-a
     {
-        font-size: 1em;
-
-        position: relative;
-
-        height: 10em;
-
-        transition: $transition;
-        transform: rotateX(60deg) rotateY(0deg);
-
-        transform-style: preserve-3d;
-
-        .face
-        {
-            font-size: 2em;
-
-            position: relative;
-
-            width: 100%;
-            height: 2em;
-
-            background-color: $faceColor;
-
-            &.side-a,
-            &.side-b
-            {
-                width: 2em;
-            }
-        }
-        .side-a
-        {
-            transform: rotateX(90deg) rotateY(-90deg) translateX(2em) translateY(1em) translateZ(1em);
-        }
-        .side-b
-        {
-            transform: rotateX(90deg) rotateY(-90deg) translateX(4em) translateY(1em) translateZ(-1em);
-            position: absolute;
-            right: 0;
-        }
-        .side-0
-        {
-            transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(-1em);
-        }
-        .side-1
-        {
-            transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(3em);
-        }
-        .top
-        {
-            transform: rotateX(0deg) rotateY(0) translateX(0em) translateY(4em) translateZ(2em);
-        }
-        .floor
-        {
-            box-shadow: 0 .1em 0.6em rgba(0,0,0,.3), .6em -0.5em 3em rgba(0,0,0,.3), 1em -1em 8em $white;
-        }
+      transform: rotateX(90deg) rotateY(-90deg) translateX(2em) translateY(1em) translateZ(1em);
+    }
+    .bar .side-b
+    {
+      transform: rotateX(90deg) rotateY(-90deg) translateX(4em) translateY(1em) translateZ(-1em);
+      position: absolute;
+      right: 0;
+    }
+    .bar .side-0
+    {
+      transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(-1em);
+    }
+    .bar .side-1
+    {
+      transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(3em);
+    }
+    .bar .top
+    {
+      transform: rotateX(0deg) rotateY(0) translateX(0em) translateY(4em) translateZ(2em);
+    }
+    .bar .floor
+    {
+      box-shadow: 0 .1em 0.6em rgba(0,0,0,.3), .6em -0.5em 3em rgba(0,0,0,.3), 1em -1em 8em $white;
+    }
+    .bar .face {
+      font-size: 2em;
+      position: relative;
+      width: 100%;
+      height: 2em;
+      background-color: var(--faceColor);
+    }
+    .bar .face.side-a,
+    .bar .face.side-b {
+      width: 2em;
     }
 
     .growing-bar
     {
-        transition: $transition;
-        background-color: $growColor;
+        transition: 0.3s;
+        background-color: var(--growColor);;
         width: 100%;
         height: 2em;
     }
@@ -186,14 +176,6 @@
 </head>
 <body>
   <header>
-    <!--<div style="text-align: center" class="container mx-auto px-4">
-      <div class='p-12 bg-ddarkblue text-white shadow-lg'>
-        <h1 class='text-6xl'>Devco</h1>
-        <p class='lead'>Devco spesialliserer seg innen webutvikling og mye annet</p>
-        <hr class='my-4'>
-        <p class='lead'></p>
-      </div>
-    </div>-->
     <nav class="bg-gray-800">
       <div class="w-full max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
@@ -242,5 +224,5 @@
   </header>
   <div class="main-wrapper">
     <div class="page-title">
-
+      <!-- <?php echo get_theme_mod('header_color_hue', '#000000');?> -->
     </div>

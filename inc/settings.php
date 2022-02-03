@@ -270,4 +270,96 @@ function devco_settings_callback_function() {
         endwhile;
     }  
 }
+
+/* test */
+class buse {
+	private $use_options;
+
+	public function __construct() {
+		add_action( 'admin_menu', array( $this, 'use_add_plugin_page' ) );
+		add_action( 'admin_init', array( $this, 'use_page_init' ) );
+	}
+
+	public function use_add_plugin_page() {
+		add_users_page(
+			'Profile', // page_title
+			'Profile', // menu_title
+			'manage_options', // capability
+			'buse', // menu_slug
+			array( $this, 'use_create_admin_page' ) // function
+		);
+	}
+
+	public function use_create_admin_page() {
+		$this->use_options = get_option( 'use_option_name' ); ?>
+
+		<div class="wrap">
+			<h2>Use</h2>
+			<p></p>
+			<?php settings_errors(); ?>
+
+			<form method="post" action="options.php">
+				<?php
+					settings_fields( 'use_option_group' );
+					do_settings_sections( 'use-admin' );
+					submit_button();
+				?>
+			</form>
+		</div>
+	<?php }
+
+	public function use_page_init() {
+		register_setting(
+			'use_option_group', // option_group
+			'use_option_name', // option_name
+			array( $this, 'use_sanitize' ) // sanitize_callback
+		);
+
+		add_settings_section(
+			'use_setting_section', // id
+			'Settings', // title
+			array( $this, 'use_section_info' ), // callback
+			'use-admin' // page
+		);
+
+		add_settings_field(
+			'github_0', // id
+			'Github', // title
+			array( $this, 'github_0_callback' ), // callback
+			'use-admin', // page
+			'use_setting_section' // section
+		);
+	}
+
+	public function use_sanitize($input) {
+		$sanitary_values = array();
+		if ( isset( $input['github_0'] ) ) {
+			$sanitary_values['github_0'] = sanitize_text_field( $input['github_0'] );
+		}
+
+		return $sanitary_values;
+	}
+
+	public function use_section_info() {
+		
+	}
+
+	public function github_0_callback() {
+		printf(
+			'<input class="regular-text" type="text" name="use_option_name[github_0]" id="github_0" value="%s">',
+			isset( $this->use_options['github_0'] ) ? esc_attr( $this->use_options['github_0']) : ''
+		);
+	}
+
+}
+if ( is_admin() )
+	$use = new buse();
+
+/* 
+ * Retrieve this value with:
+ * $use_options = get_option( 'use_option_name' ); // Array of All Options
+ * $github_0 = $use_options['github_0']; // Github
+ */
+
+
 ?>

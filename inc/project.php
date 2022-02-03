@@ -37,7 +37,7 @@ function devco_create_projectposttype() {
         'has_archive' => true,
         'hierarchical' => false,
         'taxonomies' => array('category', 'post_tag', 'thumbnail'),
-        // 'menu_icon'           => get_bloginfo('template_url') . "/assets/images/devcoLogoTiny.png",
+        'menu_icon'           => get_bloginfo('template_url') . "/assets/images/devcoLogoTiny.png",
         'show_in_menu'        => true,
         'show_in_nav_menus'   => true,
         'show_in_admin_bar'   => true,

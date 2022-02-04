@@ -26,6 +26,28 @@ function devco_register_blocks() {
 		'editor_script' => 'call-to-action', // Loads only on editor.
 	] );
 	register_block_type(__DIR__);
+
+
+	// test
+	wp_register_script(
+		'project',
+        get_template_directory_uri() . '/inc/blocks/project/project.js',
+		[ 'wp-blocks', 'wp-element', 'wp-editor' ],
+		filemtime( get_template_directory_uri() . '/inc/blocks/project/project.js' )
+	);
+	wp_register_style(
+		'project',
+        get_template_directory_uri() . '/inc/blocks/project/project.css',
+		[],
+		filemtime( get_template_directory_uri() . '/inc/blocks/project/project.css' )
+	);
+
+	// Register block script and style.
+	register_block_type( 'devco/project', [
+		'style' => 'project', // Loads both on editor and frontend.
+		'editor_script' => 'project', // Loads only on editor.
+	] );
+	register_block_type(__DIR__);
 }
 
 add_action( 'init', 'devco_register_blocks' );

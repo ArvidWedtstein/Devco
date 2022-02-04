@@ -62,7 +62,7 @@ function devco_create_projectposttype() {
         'query_var' => true,
         'rewrite' => array('slug' => 'project'),
         'has_archive' => true,
-        'hierarchical' => false,
+        'hierarchical' => true,
         'taxonomies' => array('post_tag', 'thumbnail', 'project_category'),
         'menu_icon'           => get_bloginfo('template_url') . "/assets/images/devcoLogoTiny.png",
         'show_in_menu'        => true,
@@ -75,7 +75,7 @@ function devco_create_projectposttype() {
         'exclude_from_search' => false,
         'publicly_queryable'  => true,
         'capability_type'     => 'post',
-        'description'         => 'Oppdrag'
+        'description'         => 'project'
     );
 
     register_post_type('project', $args);

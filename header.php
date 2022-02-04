@@ -51,123 +51,69 @@
       border-radius: 0.25rem;
       color: #ffffff;
     }
-    .chart
-    {
-        font-size: 1em;
-
-        perspective: 1000px;
-        perspective-origin: 50% 50%;
-        backface-visibility: visible;
+    .chart {
+      font-size: 1em;
+      perspective: 1000px;
+      perspective-origin: 50% 50%;
+      backface-visibility: visible;
     }
-
     .bar {
       font-size: 1em;
       position: relative;
       height: 10em;
-      transition: 0.2s;
+      transition: all 0.3s ease-in-out;
       transform: rotateX(60deg) rotateY(0deg);
       transform-style: preserve-3d;
-    }
-    .bar .side-a
-    {
-      transform: rotateX(90deg) rotateY(-90deg) translateX(2em) translateY(1em) translateZ(1em);
-    }
-    .bar .side-b
-    {
-      transform: rotateX(90deg) rotateY(-90deg) translateX(4em) translateY(1em) translateZ(-1em);
-      position: absolute;
-      right: 0;
-    }
-    .bar .side-0
-    {
-      transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(-1em);
-    }
-    .bar .side-1
-    {
-      transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(3em);
-    }
-    .bar .top
-    {
-      transform: rotateX(0deg) rotateY(0) translateX(0em) translateY(4em) translateZ(2em);
-    }
-    .bar .floor
-    {
-      box-shadow: 0 .1em 0.6em rgba(0,0,0,.3), .6em -0.5em 3em rgba(0,0,0,.3), 1em -1em 8em $white;
     }
     .bar .face {
       font-size: 2em;
       position: relative;
       width: 100%;
       height: 2em;
-      background-color: var(--faceColor);
+      background-color: rgba(254, 254, 254, .3);
     }
-    .bar .face.side-a,
-    .bar .face.side-b {
+    .bar .face.side-a, .bar .face.side-b {
       width: 2em;
     }
-
-    .growing-bar
-    {
-        transition: 0.3s;
-        background-color: var(--growColor);;
-        width: 100%;
-        height: 2em;
+    .bar .side-a {
+      transform: rotateX(90deg) rotateY(-90deg) translateX(2em) translateY(1em) translateZ(1em);
     }
-
-    @mixin drawSkin($color, $name)
-    {
-        .bar.#{$name}
-        {
-            .side-a,
-            // &.bar-100 .side-b,
-            .growing-bar
-            {
-                background-color: rgba($color, .6);
-            }
-            .side-0 .growing-bar
-            {
-                box-shadow: -0.5em -1.5em 4em $color;
-            }
-            .floor .growing-bar
-            {
-                box-shadow: 0em 0em 2em $color;
-            }
-        }
+    .bar .side-b {
+      transform: rotateX(90deg) rotateY(-90deg) translateX(4em) translateY(1em) translateZ(-1em);
+      position: absolute;
+      right: 0;
     }
-
-    @mixin drawFaces($color, $name)
-    {
-        .chart .bar.#{$name} .face
-        {
-            background-color: rgba($color, .2);
-        }
+    .bar .side-0 {
+      transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(-1em);
     }
-
-    @include drawSkin(rgba($yellow, .8), 'yellow');
-    @include drawSkin(rgba($red, .8), 'red');
-    @include drawSkin($cyan, 'cyan');
-    @include drawSkin(rgba($navy, .8), 'navy');
-    @include drawSkin($lime, 'lime');
-    @include drawSkin($white, 'white');
-    @include drawSkin($gray, 'gray');
-
-    @include drawFaces(rgba($yellow, .6), 'yellow-face');
-    @include drawFaces($lime, 'lime-face');
-    @include drawFaces(rgba($red, .6), 'red-face');
-    @include drawFaces(rgba($navy, .6), 'navy-face');
-    @include drawFaces($cyan, 'cyan-face');
-    @include drawFaces($gray, 'gray-face');
-    @include drawFaces($lightGray, 'lightGray-face');
-
-    @for $i from 0 to 101
-    {
-        .bar-#{$i}
-        {
-            .growing-bar
-            {
-                width: percentage($i/100);
-            }
-        }
+    .bar .side-1 {
+      transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(3em);
+    }
+    .bar .top {
+      transform: rotateX(0deg) rotateY(0) translateX(0em) translateY(4em) translateZ(2em);
+    }
+    .bar .floor {
+      box-shadow: 0 0.1em 0.6em rgba(0, 0, 0, .3), 0.6em -0.5em 3em rgba(0, 0, 0, .3), 1em -1em 8em #fefefe;
+    }
+    .growing-bar {
+      transition: all 0.3s ease-in-out;
+      background-color: rgba(236, 0, 140, .6);
+      width: 100%;
+      height: 2em;
+    }
+    .bar.red .side-a, input[id='red']:checked ~ .chart .side-a, .bar.red .growing-bar, input[id='red']:checked ~ .chart .growing-bar {
+	    background-color: rgba(236, 0, 140, .6);
+    }
+    .bar.red .side-0 .growing-bar, input[id='red']:checked ~ .chart .side-0 .growing-bar {
+      box-shadow: -0.5em -1.5em 4em rgba(236, 0, 140, .8);
+    }
+    .bar.red .floor .growing-bar, input[id='red']:checked ~ .chart .floor .growing-bar {
+      box-shadow: 0em 0em 2em rgba(236, 0, 140, .8);
+    }
+    .chart .bar.red-face .face {
+      background-color: rgba(236, 0, 140, .2);
+    } .chart .bar.red-face .face {
+      background-color: rgba(236, 0, 140, .2);
     }
   </style>
   <?php

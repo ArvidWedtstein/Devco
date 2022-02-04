@@ -20,6 +20,7 @@ get_header();
       echo $github_0;
       echo get_theme_mod("devco_project_post_page");
       echo get_theme_mod("devco_oppdrag_post_page");
+      $slug = get_post_field( 'project', get_post() );
     ?>
     <img width="24" class="rounded-full" src="<?php 
       $get_author_id = get_the_author_meta('ID');

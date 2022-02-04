@@ -8,7 +8,7 @@
         <p class="text-white text-base">
           <?php the_author(); ?>
         </p>
-        <?php 
+        <?php
           $tags = get_the_tags();
           $html = '<div class="">';
           if ($tags) {
@@ -28,7 +28,7 @@
             $phrase = get_the_content();
             // This is where wordpress filters the content text and adds paragraphs
             $phrase = apply_filters('the_content', $phrase);
-            echo 
+
             $replace = '<p class="text-white text-base">';
 
             echo str_replace('<p class="text-white text-base">', $replace, $phrase);

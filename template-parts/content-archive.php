@@ -17,7 +17,12 @@
       </span>
     </div>
     <!-- <img class="object-fill h-48 w-full" src="<?php //the_post_thumbnail() ?>"> -->
-    <img class="object-fill h-48 w-full" src="<?php echo the_post_thumbnail_url('thumbnail'); ?>">
+    <?php
+      if (has_post_thumbnail()) {
+        echo '<img class="object-fill h-48 w-full" src="' . the_post_thumbnail_url('thumbnail') . '">';
+      }
+    ?>
+    
     <?php 
       the_tags('<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><i class="fa fa-tag"></i>', '</span><span class="tag"><i class="fa fa-tag"></i>', '</span>');
     ?>

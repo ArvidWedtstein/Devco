@@ -8,7 +8,7 @@
 		attributes: {
             content: {
                 type: 'string',
-                default: 'Collaboratively customize web-enabled supply chains and turnkey collaboration and idea-sharing Assertively cultivate.'
+                default: 'testr.'
             },
             button: {
                 type: 'string',

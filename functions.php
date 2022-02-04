@@ -109,8 +109,48 @@ require get_template_directory() . '/inc/author-info-box.php';
 // Enable block patterns
 require get_template_directory() . '/inc/block-patterns.php';
 
+function mytheme_block_templates( $args, $post_type ) {
 
-
+    // Only add template to 'post' post type
+    // Change for your post type: eg 'page', 'event', 'product'
+    if ( 'oppdrag' == $post_type ) {
+  
+      // Optionally lock templates from further changes
+      // Change to 'insert' to allow adding other blocks, but lock defined blocks
+      $args['template_lock'] = 'all';
+  
+      // Set the template
+      $args['template'] = [
+        [
+          // Example of including a core image block
+          // Optional alignment setting        
+          'core/image', [
+            'align' => 'left',
+          ]
+        ],
+        [
+          // Example of including a core paragraph block        
+          // Optional alignment placeholder setting         
+          'core/paragraph', [
+            'placeholder' => 'The only thing you can add',
+            'align' => 'right',
+          ]
+        ],
+        [
+          // Example of including a custom block        
+          // Optional placeholder setting        
+          'devco/oppdrag', [
+            'placeholder' => 'Custom placeholder',
+          ]
+        ]
+      ];
+    }
+  
+    return $args;
+  
+  }
+  // Hook function into post type arguments filter
+  add_filter( 'register_post_type_args', 'mytheme_block_templates', 20, 2 );
 
 // https://blog.templatetoaster.com/wordpress-settings-api-creating-theme-options/
 

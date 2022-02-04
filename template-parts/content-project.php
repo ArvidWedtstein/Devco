@@ -34,37 +34,6 @@
             echo str_replace('<p class="text-white text-base">', $replace, $phrase);
 
         ?>
-        <article>
-          <input type="radio" name="switch-pos" id="pos-0">
-          <input type="radio" name="switch-pos" id="pos-1">
-          <input type="radio" name="switch-pos" id="pos-2" checked>
-          <input type="radio" name="switch-pos" id="pos-3">
-          <div class="chart">
-            <div class="bar bar-30 white">
-              <div class="face top">
-                  <div class="growing-bar"></div>
-              </div>
-              <div class="face side-0">
-                  <div class="growing-bar"></div>
-              </div>
-              <div class="face floor">
-                  <div class="growing-bar"></div>
-              </div>
-              <div class="face side-a"></div>
-              <div class="face side-b"></div>
-              <div class="face side-1">
-                  <div class="growing-bar"></div>
-              </div>
-            </div>
-          </div>
-          <p>Try another position :)</p>
-          <nav class="actions">
-              <label for="pos-0">1/4</label>
-              <label for="pos-1">2/4</label>
-              <label for="pos-2">3/4</label>
-              <label for="pos-3">Full</label>
-          </nav>
-        </article>
         <hr class="my-3">
         <?php echo get_option( 'devco_color' ); ?>
         <?php comments_template(); ?>

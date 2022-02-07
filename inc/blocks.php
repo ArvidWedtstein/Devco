@@ -35,7 +35,7 @@ function devco_register_blocks() {
 	wp_register_script(
 		'project',
         get_template_directory_uri() . '/inc/blocks/project/project.js',
-		[ 'wp-blocks', 'wp-element', 'wp-editor' ],
+		[ 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' ],
 		$version
 		// filemtime( get_template_directory_uri() . '/inc/blocks/project/project.js' )
 	);
@@ -52,6 +52,8 @@ function devco_register_blocks() {
 		'style' => 'project', // Loads both on editor and frontend.
 		'editor_script' => 'project', // Loads only on editor.
 	] );
+
+
 	register_block_type(__DIR__);
 }
 

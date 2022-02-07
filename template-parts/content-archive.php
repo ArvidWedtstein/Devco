@@ -19,7 +19,7 @@
     <!-- <img class="object-fill h-48 w-full" src="<?php //the_post_thumbnail() ?>"> -->
     <?php
       if (has_post_thumbnail()) {
-        echo '<img class="object-fill h-48 w-full" src="' . the_post_thumbnail_url('thumbnail') . '">';
+        echo '<img class="object-fill h-48 w-full" src="' . the_post_thumbnail_url("thumbnail") . '">';
       }
     ?>
     

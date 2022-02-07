@@ -26,7 +26,6 @@ function devco_create_posttype() {
         'search_items' => __('Search oppdrag'),
         'not_found' => __('No oppdrag found.'),
         'update_item' => __('Update Oppdrag'),
-        'parent_item_colon' => '',
     );
     $args = array(
         'supports' => $supports,
@@ -37,7 +36,7 @@ function devco_create_posttype() {
         'rewrite' => array('slug' => 'oppdrag'),
         'has_archive' => true,
         'hierarchical' => false,
-        'taxonomies' => array('category', 'post_tag', 'thumbnail'),
+        'taxonomies' => array('category', 'post-tags', 'thumbnail'),
         'show_in_menu'        => true,
         'show_in_nav_menus'   => true,
         'show_in_admin_bar'   => true,
@@ -48,7 +47,7 @@ function devco_create_posttype() {
         'exclude_from_search' => false,
         'publicly_queryable'  => true,
         'capability_type'     => 'post',
-        'description'         => 'Oppdrag'
+        'description'         => 'oppdrag'
     );
 
     register_post_type('oppdrag', $args);

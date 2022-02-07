@@ -263,7 +263,7 @@ add_action('admin_menu','devco_admin_subpage_settings');
 
 function devco_settings_callback_function() {
     if (have_posts()) {
-        $args = array( 'post_type' => 'oppdrag' );
+        $args = array( 'post_type' => 'project' );
         $loop = new WP_Query( $args );
         while ( $loop->have_posts() ) : $loop->the_post(); 
             echo the_post();
@@ -287,10 +287,33 @@ class buse {
 			'manage_options', // capability
 			'buse', // menu_slug
 			array( $this, 'use_create_admin_page' ) // function
-		);
+        );
+        if ( current_user_can( 'edit_users' ) ) {
+            $parent = 'users.php';
+        } else {
+            $parent = 'profile.php';
+        }
+        add_submenu_page( $parent, "Test", "testing", "edit_users", 'bbuse', array( $this, 'use_create_dd_page' ) );
 	}
 
 	public function use_create_admin_page() {
+		$this->use_options = get_option( 'use_option_name' ); ?>
+
+		<div class="wrap">
+			<h2>Use</h2>
+			<p></p>
+			<?php settings_errors(); ?>
+
+			<form method="post" action="options.php">
+				<?php
+					settings_fields( 'use_option_group' );
+					do_settings_sections( 'use-admin' );
+					submit_button();
+				?>
+			</form>
+		</div>
+	<?php }
+	public function use_create_dd_page() {
 		$this->use_options = get_option( 'use_option_name' ); ?>
 
 		<div class="wrap">

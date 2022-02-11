@@ -37,6 +37,7 @@ function devco_create_projectposttype() {
         'revisions', // post revisions
         'post-formats', // post formats
         'post-tags',
+        'post-thumbnail'
     );
     $labels = array(
         'name' => _x('Project', 'plural'),

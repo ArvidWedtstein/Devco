@@ -23,9 +23,14 @@ function devco_theme_support() {
 
     /* Add Post Thumbnails */
     add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 1568, 9999 );
+	  set_post_thumbnail_size( 1568, 9999 );
     add_theme_support('dark-editor-style');
-    add_theme_support('custom-background');
+    add_theme_support(
+      'custom-background',
+      array(
+        'default-color' => 'f5efe0',
+      )
+    );
     add_theme_support('wp-block-styles');
     add_theme_support( 'editor-styles' );
     add_theme_support( 'automatic-feed-links' );
@@ -33,20 +38,22 @@ function devco_theme_support() {
     add_theme_support( 'editor-color-palette' );
     add_theme_support( 'block-templates' );
     add_theme_support('widgets-block-editor');
+    add_theme_support( 'align-wide' );
     add_theme_support('widgets');
     add_theme_support('post-formats');
+    add_theme_support( 'customize-selective-refresh-widgets' );
     add_theme_support(
-        'html5',
-        array(
-            'search-form',
-            'comment-form',
-            'comment-list',
-            'gallery',
-            'caption',
-            'script',
-            'style',
-            'navigation-widgets',
-        )
+		'html5',
+      array(
+        'search-form',
+        'comment-form',
+        'comment-list',
+        'gallery',
+        'caption',
+        'script',
+        'style',
+        'navigation-widgets',
+      )
     );
 }
 add_action('after_theme_setup', 'devco_theme_support');

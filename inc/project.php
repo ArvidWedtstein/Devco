@@ -39,8 +39,8 @@ function devco_create_projectposttype() {
         'post-tags',
     );
     $labels = array(
-        'name' => _x('project', 'plural'),
-        'singular_name' => _x('project', 'singular'),
+        'name' => _x('Project', 'plural'),
+        'singular_name' => _x('Project', 'singular'),
         'menu_name' => _x('Projects', 'admin menu'),
         'name_admin_bar' => _x('Projects', 'admin bar'),
         'add_new' => _x('Create New Project', 'add new'),

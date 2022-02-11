@@ -276,7 +276,7 @@ class buse {
 	private $use_options;
 
 	public function __construct() {
-		add_action( 'admin_menu', array( $this, 'use_add_plugin_page' ) );
+		// add_action( 'admin_menu', array( $this, 'use_add_plugin_page' ) );
 		add_action( 'admin_init', array( $this, 'use_page_init' ) );
 	}
 
@@ -288,7 +288,7 @@ class buse {
 			'buse', // menu_slug
 			array( $this, 'use_create_admin_page' ) // function
         );
-        if ( current_user_can( 'edit_users' ) ) {
+        if (current_user_can( 'edit_users' )) {
             $parent = 'users.php';
         } else {
             $parent = 'profile.php';

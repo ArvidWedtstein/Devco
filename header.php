@@ -149,6 +149,7 @@
               <a class="text-white text-xl font-bold" href="index.php"><?php echo get_bloginfo('name') ?></a>
             </div>
             <div class="hidden sm:block sm:ml-6">
+              
               <?php
                 wp_nav_menu(
                   array(
@@ -158,6 +159,7 @@
                     'items_wrap' => '<div id="" class="flex space-x-4">%3$s</div>'
                   )
                 );
+                echo wp_loginout();
               ?>
           </div>
         </div>

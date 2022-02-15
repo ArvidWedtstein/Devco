@@ -11,16 +11,17 @@
         );
       ?>
       <?php
+        $data = null;
         dynamic_sidebar('footer-1');
-        $curl = curl_init();
+        // $curl = curl_init();
+        // $url = "https://api.github.com/orgs/devco-morkjebla/repos"
+        // $url = sprintf("%s?%s", $url, http_build_query($data));
 
-        $url = sprintf("%s?%s", $url, http_build_query($data));
 
+        // $result = curl_exec($curl);
 
-        $result = curl_exec($curl);
-
-        echo $result
-        curl_close();
+        // echo $result
+        // curl_close();
       ?>
     </footer>
   </div>

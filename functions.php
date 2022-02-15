@@ -85,7 +85,24 @@ function devco_register_scripts() {
 }
 add_action('wp_enqueue_scripts', "devco_register_scripts");
 
+function devco_get_projects($url, $data = false) {
+  $curl = curl_init();
 
+  $url = sprintf("%s?%s", $url, http_build_query($data));
+
+
+  $result = curl_exec($curl);
+
+  curl_close();
+  $postarry = array();
+  foreach($result as &$value) {
+    array_push($postarry, {
+      'post_title' -> $value.
+    })
+  }
+  
+  
+}
 
 
 // add custom roles

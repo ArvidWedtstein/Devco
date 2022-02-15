@@ -12,6 +12,15 @@
       ?>
       <?php
         dynamic_sidebar('footer-1');
+        $curl = curl_init();
+
+        $url = sprintf("%s?%s", $url, http_build_query($data));
+
+
+        $result = curl_exec($curl);
+
+        echo $result
+        curl_close();
       ?>
     </footer>
   </div>

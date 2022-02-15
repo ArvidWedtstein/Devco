@@ -106,48 +106,166 @@ function devco_customize_register( $wp_customize ) {
 
 	// Create our panels
 	
-	$wp_customize->add_panel( 'devco_colors', array(
+	$wp_customize->add_panel( 'devco_footer', array(
 		'capability'     => 'edit_theme_options',
-		'title'          => __('Colors', 'text_domain'),
+		'title'          => __('Footer', 'text_domain'),
 		'description'    => __('Define the colors of the page by selecting one of the 36 million colors', 'text_domain'),
 	) );
 			
 	// Create our sections
 	
-	$wp_customize->add_section( 'devco_colors_section' , array(
-		'title'             => __('Colors', 'text_domain'),
-		'description'       => __('Define colors here', 'text_domain'),
-		'panel'             => 'devco_colors',
-		'capability'        => 'edit_theme_options',
-	) );
+	// $wp_customize->add_section( 'devco_colors_section' , array(
+	// 	'title'             => __('Footer', 'text_domain'),
+	// 	'description'       => __('Define colors here', 'text_domain'),
+	// 	'panel'             => 'devco_colors',
+	// 	'capability'        => 'edit_theme_options',
+	// ));
 			
 	// Create our settings
 	
-	$wp_customize->add_setting( 'devco_project_post_page' , array(
+	// $wp_customize->add_setting( 'devco_footer_copyright' , array(
+	// 	'type'          => 'theme_mod',
+	// 	'capability'    => 'edit_theme_options',
+	// 	'transport'     => 'refresh',
+	// ) );
+	// $wp_customize->add_control( 'devco_footer_copyright_control', array(
+	// 	'label'      => __('Footer Copyright', 'text_domain'),
+	// 	'description'=> __('Copyright text', 'text_domain'),
+	// 	'section'    => 'devco_colors_section',
+	// 	'settings'   => 'devco_footer_copyright',
+	// 	'type'       => 'textarea',
+	// ) );
+
+	// Contact Footer Area
+	$wp_customize->add_section( 'devco_footer_contact_section', array(
+		'title'             => __('Contact', 'text_domain'),
+		'description'       => __('Define footer here', 'text_domain'),
+		'panel'             => 'devco_footer',
+		'capability'        => 'edit_theme_options',
+	) );
+	$wp_customize->add_setting( 'devco_footer_copyright', array(
 		'type'          => 'theme_mod',
 		'capability'    => 'edit_theme_options',
 		'transport'     => 'refresh',
 	) );
-	$wp_customize->add_control( 'devco_project_post_page_control', array(
-		'label'      => __('Post Project Page', 'text_domain'),
-		'description'=> __('yEs', 'text_domain'),
-		'section'    => 'devco_colors_section',
-		'settings'   => 'devco_project_post_page',
-		'type'       => 'dropdown-pages',
+	$wp_customize->add_control( 'devco_footer_copyright_control', array(
+		'label'      => __('Footer Copyright', 'text_domain'),
+		'description'=> __('Copyright text', 'text_domain'),
+		'section'    => 'devco_footer_contact_section',
+		'settings'   => 'devco_footer_copyright',
+		'type'       => 'textarea',
 	) );
+	$wp_customize->add_setting( 'devco_footer_contact_address' , array(
+		'type'          => 'theme_mod',
+		'capability'    => 'edit_theme_options',
+		'transport'     => 'refresh',
+	) );
+	$wp_customize->add_control( 'devco_footer_contact_address_control', array(
+		'label'      => __('Contact Address', 'text_domain'),
+		'description'=> __('Company Address', 'text_domain'),
+		'section'    => 'devco_footer_contact_section',
+		'settings'   => 'devco_footer_contact_address',
+		'type'       => 'textarea',
+	) );
+	$wp_customize->add_setting( 'devco_footer_contact_email' , array(
+		'type'          => 'theme_mod',
+		'capability'    => 'edit_theme_options',
+		'transport'     => 'refresh',
+	) );
+	$wp_customize->add_control( 'devco_footer_contact_email_control', array(
+		'label'      => __('Contact Email', 'text_domain'),
+		'description'=> __('Company Email', 'text_domain'),
+		'section'    => 'devco_footer_contact_section',
+		'settings'   => 'devco_footer_contact_email',
+		'type'       => 'email',
+	) );
+	$wp_customize->add_setting( 'devco_footer_contact_github' , array(
+		'type'          => 'theme_mod',
+		'capability'    => 'edit_theme_options',
+		'transport'     => 'refresh',
+	) );
+	$wp_customize->add_control( 'devco_footer_contact_github_control', array(
+		'label'      => __('Contact Github', 'text_domain'),
+		'description'=> __('Company Github', 'text_domain'),
+		'section'    => 'devco_footer_contact_section',
+		'settings'   => 'devco_footer_contact_github',
+		'type'       => 'url',
+	) );
+	$wp_customize->add_setting( 'devco_footer_contact_twitter' , array(
+		'type'          => 'theme_mod',
+		'capability'    => 'edit_theme_options',
+		'transport'     => 'refresh',
+	) );
+	$wp_customize->add_control( 'devco_footer_contact_twitter_control', array(
+		'label'      => __('Contact Twitter', 'text_domain'),
+		'description'=> __('Company Twitter', 'text_domain'),
+		'section'    => 'devco_footer_contact_section',
+		'settings'   => 'devco_footer_contact_twitter',
+		'type'       => 'url',
+	) );
+
+	/* Products section */
+	$wp_customize->add_section( 'devco_footer_products_section', array(
+		'title'             => __('Products', 'text_domain'),
+		'description'       => __('Define products here', 'text_domain'),
+		'panel'             => 'devco_footer',
+		'capability'        => 'edit_theme_options',
+	) );
+	$wp_customize->add_setting( 'devco_footer_contact_twitter2' , array(
+		'type'          => 'theme_mod',
+		'capability'    => 'edit_theme_options',
+		'transport'     => 'refresh',
+	) );
+	$wp_customize->add_control( 'devco_footer_contact_twitter_control', array(
+		'label'      => __('Contact Twitter', 'text_domain'),
+		'description'=> __('Company Twitter', 'text_domain'),
+		'section'    => 'devco_footer_contact_section',
+		'settings'   => 'devco_footer_contact_twitter2',
+		'type'       => 'url',
+	) );
+	$wp_customize->add_setting( 'devco_footer_products' , array(
+		'type'          => 'theme_mod',
+		'capability'    => 'edit_theme_options',
+		'transport'     => 'refresh',
+	));
+	$wp_customize->add_control( 'devco_footer_products_control', array(
+		'label'      => __('Products', 'text_domain'),
+		'description'=> __('Company Products', 'text_domain'),
+		'section'    => 'devco_footer_products_section',
+		'settings'   => 'devco_footer_products',
+		'type'       => 'checkbox',
+		'choices'	 => array (
+			'Wordpress' => __('Wordpress Websites'),
+			'Nuxt' => __('Nuxt Websites'),
+			'React Native' => __('React Native App')
+		)
+	) );
+
+	// $wp_customize->add_setting( 'devco_project_post_page' , array(
+	// 	'type'          => 'theme_mod',
+	// 	'capability'    => 'edit_theme_options',
+	// 	'transport'     => 'refresh',
+	// ) );
+	// $wp_customize->add_control( 'devco_project_post_page_control', array(
+	// 	'label'      => __('Post Project Page', 'text_domain'),
+	// 	'description'=> __('yEs', 'text_domain'),
+	// 	'section'    => 'devco_colors_section',
+	// 	'settings'   => 'devco_project_post_page',
+	// 	'type'       => 'dropdown-pages',
+	// ) );
 			
-	$wp_customize->add_setting( 'devco_oppdrag_post_page' , array(
-		'type'          => 'theme_mod',
-		'capability'    => 'edit_theme_options',
-		'transport'     => 'refresh',
-	) );
-	$wp_customize->add_control( 'devco_oppdrag_post_page_control', array(
-		'label'      => __('Post Oppdrag Page', 'text_domain'),
-		'description'=> __('Set Oppdrag page', 'text_domain'),
-		'section'    => 'devco_colors_section',
-		'settings'   => 'devco_oppdrag_post_page',
-		'type'       => 'dropdown-pages',
-	) );
+	// $wp_customize->add_setting( 'devco_oppdrag_post_page' , array(
+	// 	'type'          => 'theme_mod',
+	// 	'capability'    => 'edit_theme_options',
+	// 	'transport'     => 'refresh',
+	// ) );
+	// $wp_customize->add_control( 'devco_oppdrag_post_page_control', array(
+	// 	'label'      => __('Post Oppdrag Page', 'text_domain'),
+	// 	'description'=> __('Set Oppdrag page', 'text_domain'),
+	// 	'section'    => 'devco_colors_section',
+	// 	'settings'   => 'devco_oppdrag_post_page',
+	// 	'type'       => 'dropdown-pages',
+	// ) );
 			
 }
 add_action( 'customize_register', 'devco_customize_register' );

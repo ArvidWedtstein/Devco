@@ -85,15 +85,16 @@ function devco_register_scripts() {
 }
 add_action('wp_enqueue_scripts', "devco_register_scripts");
 
-// function devco_get_projects($url, $data = false) {
-//   $curl = curl_init();
+// function devco_get_projects() {
+//   $url = 'https://api.github.com/orgs/devco-morkjebla/repos';
+//   $ch = curl_init($url);
+//   curl_setopt($ch, CURLOPT_HTTPGET, true);
+//   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//   $response_json = curl_exec($ch);
+//   curl_close($ch);
+//   $response=json_decode($response_json, true);
 
-//   $url = sprintf("%s?%s", $url, http_build_query($data));
-
-
-//   $result = curl_exec($curl);
-
-//   curl_close();
+//   // echo $response
 //   $postarry = array();
 //   foreach($result as &$value) {
 //     array_push($postarry, {
@@ -172,7 +173,7 @@ function mytheme_block_templates( $args, $post_type ) {
   
   }
   // Hook function into post type arguments filter
-  add_filter( 'register_post_type_args', 'mytheme_block_templates', 20, 2 );
+  // add_filter( 'register_post_type_args', 'mytheme_block_templates', 20, 2 );
 
 // https://blog.templatetoaster.com/wordpress-settings-api-creating-theme-options/
 

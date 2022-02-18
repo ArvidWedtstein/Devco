@@ -156,7 +156,7 @@
                     'menu' => "header",
                     'container' => "",
                     'theme_location' => "header",
-                    'items_wrap' => '<div id="" class="flex space-x-4">%3$s</div>'
+                    'items_wrap' => '<div id="%2$s" class="flex space-x-4">%3$s</div>'
                   )
                 );
                 echo wp_loginout();
@@ -164,9 +164,9 @@
           </div>
         </div>
       </div>
-      <!--<?php
+      <?php
         dynamic_sidebar('sidebar-1');
-      ?>-->  
+      ?>
       
     </nav>
   </header>

@@ -140,10 +140,14 @@
                                 ),
                             ),
                         ),
-                        el('p', 
+                        el(editor.RichText, 
                             { 
-                                className: '',
-                                value: props.attributes.range
+                                className: 'text-black',
+                                tagName: 'span',
+                                value: props.attributes.range,
+                                onChange: function( content ) {
+                                    props.setAttributes( { range: content } );
+                                }
                             }
                         )
                     )
@@ -179,10 +183,14 @@
                             ),
                         ),
                     ),
-                    el('p', 
+                    el(editor.RichText, 
                         { 
-                            className: '',
-                            value: props.attributes.range
+                            className: 'text-black',
+                            tagName: 'span',
+                            value: props.attributes.range,
+                            onChange: function( content ) {
+                                props.setAttributes( { range: content } );
+                            }
                         }
                     )
                 )

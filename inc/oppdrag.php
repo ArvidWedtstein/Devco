@@ -36,7 +36,7 @@ function devco_create_posttype() {
         'rewrite' => array('slug' => 'oppdrag'),
         'has_archive' => true,
         'hierarchical' => false,
-        'taxonomies' => array('category', 'post-tags', 'thumbnail'),
+        'taxonomies' => array('category', 'post_tag', 'thumbnail', 'project_category'),
         'show_in_menu'        => true,
         'show_in_nav_menus'   => true,
         'show_in_admin_bar'   => true,

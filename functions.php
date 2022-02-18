@@ -107,12 +107,14 @@ add_action('wp_enqueue_scripts', "devco_register_scripts");
 // add custom roles
 require get_template_directory() . '/inc/roles.php';
 
-
-// Add custom posttype
-require get_template_directory() . '/inc/oppdrag.php';
-
 // Add Projects type
 require get_template_directory() . '/inc/project.php';
+
+
+// Add oppdrag posttype
+require get_template_directory() . '/inc/oppdrag.php';
+
+
 
 /* Customizer Options */
 require get_template_directory() . '/inc/customizer.php';

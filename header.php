@@ -156,10 +156,10 @@
                     'menu' => "header",
                     'container' => "",
                     'theme_location' => "header",
-                    'items_wrap' => '<div id="%2$s" class="flex space-x-4">%3$s</div>'
+                    'items_wrap' => '<div id="" class="flex space-x-4">%3$s</div>'
                   )
                 );
-                echo wp_loginout();
+                echo '<div class="menu"><ul><li class="page_item page-item-1">' . wp_loginout() .'</li></ul></div>';
               ?>
           </div>
         </div>

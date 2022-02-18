@@ -1,16 +1,17 @@
     <footer class="text-center lg:text-left bg-gray-100 text-gray-600">
-      <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
-        <symbol id="facebook" viewBox="0 0 512 512">
-          <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path>
-        </symbol>
-      </svg>
       <div class="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
         <div class="mr-12 hidden lg:block">
-          <span>Get connected with us on social networks:<svg focusable="false" width="24" height="24"><use xlink:href="#facebook"/></svg></span>
+          <span>Get connected with us on social networks:</span>
         </div>
         <div class="flex justify-center">
           <a href="#!" class="mr-6 text-gray-600">
-            <svg focusable="false" width="24" height="24"><use xlink:href="#facebook"/></svg>
+            <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f"
+              class="w-2.5" role="img" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 320 512">
+              <path fill="currentColor"
+                d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">
+              </path>
+            </svg>
           </a>
           <a href="#!" class="mr-6 text-gray-600">
             <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter"

@@ -85,23 +85,6 @@ function devco_register_scripts() {
 }
 add_action('wp_enqueue_scripts', "devco_register_scripts");
 
-// function devco_get_projects() {
-//   $url = 'https://api.github.com/orgs/devco-morkjebla/repos';
-//   $ch = curl_init($url);
-//   curl_setopt($ch, CURLOPT_HTTPGET, true);
-//   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//   $response_json = curl_exec($ch);
-//   curl_close($ch);
-//   $response=json_decode($response_json, true);
-
-//   // echo $response
-//   $postarry = array();
-//   foreach($result as &$value) {
-//     array_push($postarry, {
-//       'post_title' -> $value.
-//     })
-//   }
-// }
 
 
 // add custom roles

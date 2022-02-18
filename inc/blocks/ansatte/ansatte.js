@@ -12,8 +12,7 @@
 		category: 'common', // The category of block in editor.
 		attributes: {
             ansatte: {
-                type: 'array',
-                default: users
+                type: 'array'
             }
         },
         // https://rudrastyh.com/gutenberg/inspector-controls.html

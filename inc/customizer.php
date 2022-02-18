@@ -60,18 +60,11 @@ function devco_customize_register( $wp_customize ) {
 	*	Create Footer Panel
 	*/
 	
-	$product1 = new Customizer_setting(
-		'devco_product1',
-		'Product1',
-		'Product1',
-		'title_tagline',
-		'textarea'
-	)
 	$wp_customize->add_panel( 'devco_footer', array(
 		'capability'     => 'edit_theme_options',
 		'title'          => __('Footer', 'text_domain'),
 		'description'    => __('yEs', 'text_domain'),
-	) );
+	));
 			
 	/*
 	* Add section to the footer panel

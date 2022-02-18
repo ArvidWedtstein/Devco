@@ -1,7 +1,43 @@
 <?php
 
-function devco_new_customizer_settings($wp_customize) {
-    // add a setting for the site logo
+
+/*
+* Create a class for setting
+*/
+class Customizer_Setting {
+	public $id;
+	public $label;
+	public $description;
+	public $section;
+	public $type;
+	public $priority;
+	function __construct($id, $label, $description, $section, $type, $priority = 100) {
+		$this -> id = $id; // id for the setting. this will be used to call the setting
+		$this -> label = $label; // label
+		$this -> description = $description;
+		$this -> section = $section;
+		$this -> type = $type;
+		$this -> priority = $priority;
+	}
+	function init( $wp_customize ) {
+		$wp_customize->add_setting( $this -> id , array(
+			'type'          => 'theme_mod',
+			'capability'    => 'edit_theme_options',
+			'transport'     => 'refresh',
+		) );
+		$wp_customize->add_control( $this -> id . '_control', array(
+			'label'      => __($this -> label, 'text_domain'), 
+			'description'=> __($this -> description, 'text_domain'),
+			'section'    => $this -> section,
+			'priority'   => $this -> priority,
+			'settings'   => $this -> id,
+			'type'       => $this -> type,
+		));
+	}
+}
+
+function devco_customize_register( $wp_customize ) {
+	// add a setting for the site logo
     $wp_customize -> add_setting('devco_theme_logo');
     // Add a control to upload the logo
     $wp_customize -> add_control( new WP_Customize_Image_Control( $wp_customize, 'devco_theme_logo',
@@ -19,47 +55,18 @@ function devco_new_customizer_settings($wp_customize) {
     'section' => 'title_tagline',
     'settings' => 'devco_color',
     )));
-}
-add_action('customize_register', 'devco_new_customizer_settings');
-/*
-* Create a class for setting
-*/
-class Customizer_Setting {
-	public $id;
-	public $label;
-	public $description;
-	public $section;
-	public $type;
-	function __construct($id, $label, $description, $section, $type) {
-		$this -> id = $id;
-		$this -> label = $label;
-		$this -> description = $description;
-		$this -> section = $section;
-		$this -> type = $type;
-	}
-	function init() {
-		$wp_customize->add_setting( $this -> id , array(
-			'type'          => 'theme_mod',
-			'capability'    => 'edit_theme_options',
-			'transport'     => 'refresh',
-		) );
-		$wp_customize->add_control( $this -> id . '_control', array(
-			'label'      => __($this -> label, 'text_domain'),
-			'description'=> __($this -> description, 'text_domain'),
-			'section'    => $this -> section,
-			'settings'   => $this -> id,
-			'type'       => $this -> type,
-		));
-	}
-}
-
-function devco_customize_register( $wp_customize ) {
-	
 
 	/*
 	*	Create Footer Panel
 	*/
 	
+	$product1 = new Customizer_setting(
+		'devco_product1',
+		'Product1',
+		'Product1',
+		'title_tagline',
+		'textarea'
+	)
 	$wp_customize->add_panel( 'devco_footer', array(
 		'capability'     => 'edit_theme_options',
 		'title'          => __('Footer', 'text_domain'),
@@ -78,20 +85,40 @@ function devco_customize_register( $wp_customize ) {
 		'capability'        => 'edit_theme_options',
 	) );
 
-	// Copyright text
-	$wp_customize->add_setting( 'devco_copyright' , array(
-		'type'          => 'theme_mod',
-		'capability'    => 'edit_theme_options',
-		'transport'     => 'refresh',
-	) );
-	$wp_customize->add_control( 'devco_copyright_control', array(
-		'label'      => __('Copyright', 'text_domain'),
-		'description'=> __('Copyright text', 'text_domain'),
-		'section'    => 'title_tagline',
-		'settings'   => 'devco_footer_contact_section',
-		'type'       => 'textarea',
+	// Products Footer Section 
+	$wp_customize->add_section( 'devco_footer_products_section', array(
+		'title'             => __('Products', 'text_domain'),
+		'description'       => __('Define products here', 'text_domain'),
+		'panel'             => 'devco_footer',
+		'capability'        => 'edit_theme_options',
 	) );
 
+
+	// Copyright text
+	$copyright = new Customizer_setting(
+		'devco_copyright', // id for the setting. this will be used to call the setting
+		'Copyright', // Label
+		'Copyright text', // Description
+		'title_tagline', // Section for the setting
+		'textarea', // type of the setting
+		100 // priority in menu
+	);
+	$copyright -> init( $wp_customize );
+
+
+	// Company Description Settings Field
+	$description = new Customizer_setting(
+		'devco_description', // id for the setting. this will be used to call the setting
+		'Description', // Label
+		'Company Description', // Description
+		'title_tagline', // Section for the setting
+		'textarea', // type of the setting
+		20 // priority in menu
+	);
+	$description -> init( $wp_customize );
+	
+
+	// Address
 	$address = new Customizer_setting(
 		'devco_footer_contact_address', // id for the setting. this will be used to call the setting
 		'Contact Address', // Label
@@ -99,78 +126,46 @@ function devco_customize_register( $wp_customize ) {
 		'devco_footer_contact_section', // Section for the setting
 		'textarea' // type of the setting
 	);
-	$address -> init();
-	// Address
-	// $wp_customize->add_setting( 'devco_footer_contact_address' , array(
-	// 	'type'          => 'theme_mod',
-	// 	'capability'    => 'edit_theme_options',
-	// 	'transport'     => 'refresh',
-	// ) );
-	// $wp_customize->add_control( 'devco_footer_contact_address_control', array(
-	// 	'label'      => __('Contact Address', 'text_domain'),
-	// 	'description'=> __('Company Address', 'text_domain'),
-	// 	'section'    => 'devco_footer_contact_section',
-	// 	'settings'   => 'devco_footer_contact_address',
-	// 	'type'       => 'textarea',
-	// ) );
+	$address -> init( $wp_customize );
 
 
-	$wp_customize->add_setting( 'devco_footer_contact_email' , array(
-		'type'          => 'theme_mod',
-		'capability'    => 'edit_theme_options',
-		'transport'     => 'refresh',
-	) );
-	$wp_customize->add_control( 'devco_footer_contact_email_control', array(
-		'label'      => __('Contact Email', 'text_domain'),
-		'description'=> __('Company Email', 'text_domain'),
-		'section'    => 'devco_footer_contact_section',
-		'settings'   => 'devco_footer_contact_email',
-		'type'       => 'email',
-	) );
-	$wp_customize->add_setting( 'devco_footer_contact_github' , array(
-		'type'          => 'theme_mod',
-		'capability'    => 'edit_theme_options',
-		'transport'     => 'refresh',
-	) );
-	$wp_customize->add_control( 'devco_footer_contact_github_control', array(
-		'label'      => __('Contact Github', 'text_domain'),
-		'description'=> __('Company Github', 'text_domain'),
-		'section'    => 'devco_footer_contact_section',
-		'settings'   => 'devco_footer_contact_github',
-		'type'       => 'url',
-	) );
-	$wp_customize->add_setting( 'devco_footer_contact_twitter' , array(
-		'type'          => 'theme_mod',
-		'capability'    => 'edit_theme_options',
-		'transport'     => 'refresh',
-	) );
-	$wp_customize->add_control( 'devco_footer_contact_twitter_control', array(
-		'label'      => __('Contact Twitter', 'text_domain'),
-		'description'=> __('Company Twitter', 'text_domain'),
-		'section'    => 'devco_footer_contact_section',
-		'settings'   => 'devco_footer_contact_twitter',
-		'type'       => 'url',
-	) );
+	// Email Settings field
+	$email = new Customizer_setting(
+		'devco_footer_contact_email', // id for the setting. this will be used to call the setting
+		'Contact Email', // Label
+		'Company Email', // Description
+		'devco_footer_contact_section', // Section for the setting
+		'email' // type of the setting
+	);
+	$email -> init( $wp_customize );
 
-	/* Products section */
-	$wp_customize->add_section( 'devco_footer_products_section', array(
-		'title'             => __('Products', 'text_domain'),
-		'description'       => __('Define products here', 'text_domain'),
-		'panel'             => 'devco_footer',
-		'capability'        => 'edit_theme_options',
-	) );
-	$wp_customize->add_setting( 'devco_footer_contact_twitter2' , array(
-		'type'          => 'theme_mod',
-		'capability'    => 'edit_theme_options',
-		'transport'     => 'refresh',
-	) );
-	$wp_customize->add_control( 'devco_footer_contact_twitter_control', array(
-		'label'      => __('Contact Twitter', 'text_domain'),
-		'description'=> __('Company Twitter', 'text_domain'),
-		'section'    => 'devco_footer_contact_section',
-		'settings'   => 'devco_footer_contact_twitter2',
-		'type'       => 'url',
-	) );
+
+	// Github link Settings field
+	$github = new Customizer_setting(
+		'devco_footer_contact_github', // id for the setting. this will be used to call the setting
+		'Contact Github', // Label
+		'Company Github', // Description
+		'devco_footer_contact_section', // Section for the setting
+		'url' // type of the setting
+	);
+	$github -> init( $wp_customize );
+
+
+	// Twitter link Settings field
+	$twitter = new Customizer_setting(
+		'devco_footer_contact_twitter', // id for the setting. this will be used to call the setting
+		'Contact Twitter', // Label
+		'Company Twitter', // Description
+		'devco_footer_contact_section', // Section for the setting
+		'url' // type of the setting
+	);
+	$twitter -> init( $wp_customize );
+	
+
+
+	/*
+	* Products Section settings
+	*/
 	$wp_customize->add_setting( 'devco_footer_products' , array(
 		'type'          => 'theme_mod',
 		'capability'    => 'edit_theme_options',

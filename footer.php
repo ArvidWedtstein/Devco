@@ -78,7 +78,14 @@
               <?php echo get_bloginfo('name') ?>
             </h6>
             <p>
-              Devco is a international company based in Haugesund, Norway. We supply the world with websolutions
+              <?php 
+                $description = get_theme_mod("devco_description"); 
+                if ($description) {
+                  echo $description;
+                } else {
+                  echo 'Insert Description here';
+                }
+              ?>
             </p>
           </div>
           <div class="">
@@ -86,7 +93,7 @@
               Products
             </h6>
             <p class="mb-4">
-              <a href="#!" class="text-gray-600">Websites</a>
+              <a href="#!" class="text-gray-600"><?php echo get_theme_mod('devco_copyright') ?></a>
             </p>
             <p class="mb-4">
               <a href="#!" class="text-gray-600">Applications</a>
@@ -183,7 +190,7 @@
       </div>
       <div class="text-center p-6 bg-gray-200">
         <?php 
-          $copyright = get_theme_mod("devco_footer_copyright"); 
+          $copyright = get_theme_mod("devco_copyright"); 
           if ($copyright) {
             echo "<span>2022 @ Copyright: </span>";
             echo '<a class="text-gray-600 font-semibold" href="https://devco.arvidw.space">' . $copyright . '</a>';

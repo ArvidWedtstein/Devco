@@ -234,10 +234,10 @@ function devco_customize_register( $wp_customize ) {
 		'section'    => 'devco_footer_products_section',
 		'settings'   => 'devco_footer_products',
 		'type'       => 'checkbox',
-		'choices'	 => array (
+		'choices'	 => array(
 			'Wordpress' => __('Wordpress Websites'),
-			'Nuxt' => __('Nuxt Websites'),
-			'React Native' => __('React Native App')
+			'Nuxt' => __('Nuxt Websites', 'nm'),
+			'React Native' => __('React Native App', 'nm')
 		)
 	) );
 

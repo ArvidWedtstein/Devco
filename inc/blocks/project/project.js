@@ -139,6 +139,12 @@
                                     el('div', { className: 'growing-bar'})
                                 ),
                             ),
+                        ),
+                        el('p', 
+                            { 
+                                className: '',
+                                value: props.attributes.range
+                            }
                         )
                     )
                 )
@@ -172,6 +178,12 @@
                                 el('div', { className: 'growing-bar'})
                             ),
                         ),
+                    ),
+                    el('p', 
+                        { 
+                            className: '',
+                            value: props.attributes.range
+                        }
                     )
                 )
             );

@@ -159,13 +159,15 @@
                     'items_wrap' => '<div id="" class="flex space-x-4">%3$s</div>'
                   )
                 );
-                echo '<div class="menu"><ul><li class="page_item page-item-1">' . wp_loginout() .'</li></ul></div>';
+                echo '<div class="flex space-x-4"><ul><li class="page_item page-item-1">';
+                echo wp_loginout();
+                echo '</li></ul></div>';
               ?>
           </div>
         </div>
       </div>
       <?php
-        dynamic_sidebar('sidebar-1');
+        // dynamic_sidebar('sidebar-1');
       ?>
       
     </nav>

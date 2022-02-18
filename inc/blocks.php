@@ -54,6 +54,36 @@ function devco_register_blocks() {
 	] );
 
 
+	$args = array(
+		'role'    => 'Administrator',
+		'orderby' => 'user_nicename',
+		'order'   => 'ASC'
+	);
+	$users = get_users( $args );
+
+	wp_register_script(
+		'ansatte',
+        get_template_directory_uri() . '/inc/blocks/ansatte/ansatte.js',
+		[ 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' ],
+		$version
+		// filemtime( get_template_directory_uri() . '/inc/blocks/project/project.js' )
+	);
+	wp_register_style(
+		'ansatte',
+        get_template_directory_uri() . '/inc/blocks/ansatte/ansatte.css',
+		[],
+		$version
+		// filemtime(get_template_directory_uri() . '/inc/blocks/project/project.css')
+	);
+
+	// Register block script and style.
+	register_block_type( 'devco/ansatte', [
+		'style' => 'ansatte', // Loads both on editor and frontend.
+		'editor_script' => 'ansatte', // Loads only on editor.
+	] );
+
+		
+
 	register_block_type(__DIR__);
 }
 

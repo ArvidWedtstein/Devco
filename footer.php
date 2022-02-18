@@ -78,7 +78,7 @@
               <?php echo get_bloginfo('name') ?>
             </h6>
             <p>
-              
+              Devco is a international company based in Haugesund, Norway. We supply the world with websolutions
             </p>
           </div>
           <div class="">
@@ -103,10 +103,10 @@
               Useful links
             </h6>
             <p class="mb-4">
-              <a href="#!" class="text-gray-600">Pricing</a>
+              <a href="#!" class="text-gray-600">Oppdrag</a>
             </p>
             <p class="mb-4">
-              <a href="#!" class="text-gray-600">Settings</a>
+              <a href="#!" class="text-gray-600">Projects</a>
             </p>
             <p class="mb-4">
               <a href="#!" class="text-gray-600">Orders</a>

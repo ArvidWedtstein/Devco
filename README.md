@@ -2,7 +2,7 @@
 
 
 
-[![Contributors][contributors-shield]]
+![Contributors][contributors-shield]
 
 
 <!-- PROJECT LOGO -->

@@ -87,8 +87,8 @@ School project. Lasted from 12.2021 to 02.2022.
 
 ## Getting Started
 
-To get started, download a program to let you run PHP locally like ![XAMPP](https://www.apachefriends.org/download.html)
-Then install ![Wordpress](https://wordpress.org/download/) into the `xampp/htdocs` folder
+To get started, download a program to let you run PHP locally like (https://www.apachefriends.org/download.html)
+Then install (https://wordpress.org/download/) into the `xampp/htdocs` folder
 Lastly you can clone the template into the `xampp/htdocs/your_wordpress_folder/wp-content/themes` folder
 
 

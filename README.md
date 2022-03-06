@@ -9,9 +9,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a>
-    <img src="https://github.com/othneildrew/Best-README-Template/images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
   <h3 align="center">Wordpress Template</h3>
 
@@ -140,7 +137,7 @@ Arvid Wedtstein - [Email](arvidw0310@gmail.com) - arvidw0310@gmail.com
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-[contributors-shield]: https://img.shields.io/github/contributors/devco-morkjebla/devco-wordpresstemplate.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/devco-morkjebla/devco-wordpresstemplate?style=for-the-badge
 
 
 - Styling: Friggings inline css (Tailwind) <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1024px-Tailwind_CSS_Logo.svg.png" alt="alpinejs" width="50" height="50">

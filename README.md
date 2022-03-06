@@ -75,24 +75,22 @@ School project. Lasted from 12.2021 to 02.2022.
 
 ### Built With
 
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+* Wordpress
+* PHP
+* Tailwindcss
+* AlpineJS
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get started, download a program to let you run PHP locally like ![XAMPP](https://www.apachefriends.org/download.html)
+Then install ![Wordpress](https://wordpress.org/download/) into the `xampp/htdocs` folder
+Lastly you can clone the template into the `xampp/htdocs/your_wordpress_folder/wp-content/themes` folder
+
 
 ### Prerequisites
 
